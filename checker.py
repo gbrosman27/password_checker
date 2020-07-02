@@ -10,9 +10,10 @@ def request_api_data(hashed_password):
         raise RuntimeError(f"Error fetching: {response.status_code}, check api and try again.")
     return response
 
+
 def pwned_api_check(password):
-    # check if password exists in API repsonse.
-    # sha1password = hashlib.sha1(password.encode(utf-8))
-    pass
+    # check if password exists in API response.
+    sha1password = hashlib.sha1(password.encode('utf-8'))
+
 
 request_api_data('123')
