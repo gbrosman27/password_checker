@@ -4,7 +4,7 @@ import sys
 
 
 def request_api_data(hashed_password):
-    # request from api with hashed password.
+    """Request from the API with the hashed password."""
     url = 'https://api.pwnedpasswords.com/range/' + hashed_password
     response = requests.get(url)
     if response.status_code != 200:
@@ -13,6 +13,7 @@ def request_api_data(hashed_password):
 
 
 def get_password_leaks_count(hashes, hash_to_check):
+    """Gets how many times the password has been leaked."""
     hashes = (line.split(':') for line in hashes.text.splitlines())
     for h, count in hashes:
         if h == hash_to_check:
@@ -21,7 +22,7 @@ def get_password_leaks_count(hashes, hash_to_check):
 
 
 def pwned_api_check(password):
-    # check if password exists in api response.
+    """Checks if the password exists in the API response."""
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
     first5_char, remaining_char = sha1password[:5], sha1password[5:]
     response = request_api_data(first5_char)
@@ -29,6 +30,7 @@ def pwned_api_check(password):
 
 
 def main(args):
+    """Gets password to be checked from command line args."""
     for password in args:
         count = pwned_api_check(password)
         if count:
