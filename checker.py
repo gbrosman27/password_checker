@@ -1,4 +1,7 @@
 import requests
 
-url = 'https://api.pwnedpasswords.com/range/' + 'password123'
+# request from api with hashed password (k-anonymity)
+url = 'https://api.pwnedpasswords.com/range/' + 'F1CEE'
 response = requests.get(url)
+print(response)
+
