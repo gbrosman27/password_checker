@@ -11,7 +11,6 @@ def request_api_data(hashed_password):
         raise RuntimeError(f"Error fetching: {response.status_code}, check api and try again.")
     return response
 
-
 def get_password_leaks_count(hashes, hash_to_check):
     """Gets how many times the password has been leaked."""
     hashes = (line.split(':') for line in hashes.text.splitlines())
