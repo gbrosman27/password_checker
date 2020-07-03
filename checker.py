@@ -11,6 +11,7 @@ def request_api_data(hashed_password):
         raise RuntimeError(f"Error fetching: {response.status_code}, check api and try again.")
     return response
 
+
 def get_password_leaks_count(hashes, hash_to_check):
     """Gets how many times the password has been leaked."""
     hashes = (line.split(':') for line in hashes.text.splitlines())
@@ -37,6 +38,7 @@ def main(args):
         else:
             print(f"{password} was not found. All good.")
     return "All Checks Complete!"
+
 
 # Run only if this is the main file. Accept multiple arguments from the command line.
 if __name__ == '__main__':
